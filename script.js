@@ -18,12 +18,20 @@ if(navigator.geolocation)
     
         let {latitude} = position.coords
         let {longitude} = position.coords
-// this link is taken from google map 
-console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
 
+        let map = L.map('map').setView([latitude, longitude], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        L.marker([latitude, longitude]).addTo(map)
+            .bindPopup('My location')
+            .openPopup();
 
     }, function(){
         alert('Could not get your position.')
     }
 );
                                                                                                                                 
+
