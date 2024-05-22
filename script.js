@@ -13,18 +13,22 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 
 if(navigator.geolocation)
-    navigator.geolocation.getCurrentPosition(function(position){
+    // gather coordonates
+navigator.geolocation.getCurrentPosition(function(position){
 
-    
+    // store the coordonates
         let {latitude} = position.coords
         let {longitude} = position.coords
 
-        let map = L.map('map').setView([latitude, longitude], 13);
-
+        // store map in map
+        const map = L.map('map').setView([latitude, longitude], 13);
+// display map
+// https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png pour un autre style
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         
+        // marker crée
         L.marker([latitude, longitude]).addTo(map)
             .bindPopup('My location')
             .openPopup();
