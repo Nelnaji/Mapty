@@ -33,7 +33,17 @@ navigator.geolocation.getCurrentPosition(function(position){
             .bindPopup('My location')
             .openPopup();
 
-    }, function(){
+
+map.on('click', function(mapEvent){
+const {lat, lng} = mapEvent.latlng;
+
+
+L.marker([latitude, longitude]).addTo(map)
+.bindPopup('clicked this')
+.openPopup();
+
+})
+}, function(){
         alert('Could not get your position.')
     }
 );
