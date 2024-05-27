@@ -38,8 +38,8 @@ map.on('click', function(mapEvent){
 const {lat, lng} = mapEvent.latlng;
 
 
-L.marker([latitude, longitude]).addTo(map)
-.bindPopup('clicked this')
+L.marker([lat, lng]).addTo(map)
+.bindPopup('new station')
 .openPopup();
 
 })
@@ -48,4 +48,5 @@ L.marker([latitude, longitude]).addTo(map)
     }
 );
                                                                                                                                 
+
 
